@@ -6,11 +6,10 @@ import HomePage from './pages/HomePage'
 import ApplicationsPage from './pages/ApplicationsPage'
 import AboutPage from './pages/AboutPage'
 import TheoryPage from './pages/TheoryPage'
-import AdvancedPage from './pages/AdvancedPage'
+import AIPage from './pages/AIPage'
 // Legacy routes for backward compatibility
 import GrowthPage from './pages/GrowthPage'
 import MusicPage from './pages/MusicPage'
-import AIPage from './pages/AIPage'
 
 function App() {
   return (
@@ -23,11 +22,11 @@ function App() {
             <Route path="/applications" element={<ApplicationsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/theory" element={<TheoryPage />} />
-            <Route path="/advanced" element={<AdvancedPage />} />
+            <Route path="/ai" element={<AIPage />} />
+            <Route path="/advanced" element={<AIPage />} />
             {/* Legacy routes for backward compatibility */}
             <Route path="/growth" element={<GrowthPage />} />
             <Route path="/music" element={<MusicPage />} />
-            <Route path="/ai" element={<AIPage />} />
           </Routes>
         </main>
         <Footer />

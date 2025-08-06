@@ -43,27 +43,83 @@ export const projects = {
       status: 'live'
     }
   ],
-  music: [],
-  ai: []
+  music: [
+    // TODO: Add music-related projects as they are completed
+    // Examples could include:
+    // - Music theory analysis tools
+    // - Chord progression generators
+    // - Audio processing applications
+    // Each project should include: demo links, GitHub repos, and specific results/features
+  ],
+  ai: [
+    {
+      id: 'nasa-space-apps',
+      title: 'NASA Space Apps Challenge - Astronaut Sleep Optimizer',
+      emoji: '🚀',
+      category: 'Data Analysis & ML',
+      description: 'AI-powered scheduling tool that analyzes astronaut sleep patterns using diet, exercise, and medication data from 100,000+ entries. Achieved global nominee status and People\'s Choice award.',
+      features: ['Data processing of 100k+ entries', 'Sleep pattern optimization', 'Multi-factor analysis', 'Scheduling algorithms'],
+      tech: ['Python', 'Pandas', 'Scikit-learn', 'Flask', 'Data Visualization'],
+      results: [
+        'Global Nominee at NASA Space Apps Challenge',
+        'People\'s Choice Award winner',
+        'Featured in The Times of India',
+        'Processed 100,000+ data entries'
+      ],
+      status: 'completed',
+      featured: true,
+      // TODO: Add links when they become available
+      liveDemo: null,
+      github: null,
+      article: null
+    }
+    // TODO: Add more AI projects as they are completed:
+    // 
+    // COMPUTER VISION:
+    // - Object detection/recognition projects with accuracy metrics
+    // - Image processing applications with before/after examples
+    // - Real-time vision applications with performance benchmarks
+    //
+    // NATURAL LANGUAGE PROCESSING:
+    // - Text analysis tools with specific use cases and results
+    // - Language model applications with user metrics
+    // - Document processing systems with efficiency gains
+    //
+    // AGENTIC AI:
+    // - Autonomous task completion systems with success rates
+    // - Decision-making frameworks with real-world applications
+    // - Multi-agent coordination systems with demonstrated capabilities
+    //
+    // DATA SCIENCE:
+    // - Predictive models with accuracy scores and validation
+    // - Data analysis projects with actionable insights
+    // - Visualization tools with user adoption metrics
+    //
+    // Each project must include:
+    // - Working demo or deployed application
+    // - GitHub repository with code
+    // - Specific metrics, results, or recognition
+    // - Clear description of problem solved and approach used
+  ]
 }
 
 export const sectionInfo = {
   growth: {
     title: 'Growth Mindset Tools',
     emoji: '📈',
-    description: 'Productivity applications designed to enhance daily life through gamification, smart planning, and privacy-first design.',
+    description: 'Productivity applications focused on personal organization, financial management, and daily planning.',
     color: 'from-green-500 to-emerald-600'
   },
   music: {
     title: 'Music Projects',
     emoji: '🎵',
-    description: 'Creative tools for music production, analysis, and discovery. Combining passion for music with cutting-edge technology.',
+    description: 'Tools and applications that combine music theory, composition, and technology.',
     color: 'from-purple-500 to-pink-600'
   },
   ai: {
-    title: 'AI Tools',
+    title: 'AI Projects',
     emoji: '🤖',
-    description: 'Intelligent applications leveraging LLMs, natural language processing, and machine learning for practical solutions.',
+    description: 'Machine learning and artificial intelligence applications with demonstrated results and real-world impact.',
     color: 'from-blue-500 to-cyan-600'
   }
 } 

@@ -14,7 +14,7 @@ export default function HomePage() {
       key: 'applications',
       title: 'Applications',
       emoji: '🚀',
-      description: 'Projects and tools I\'ve built using AI to solve real-world problems and enhance productivity.',
+      description: 'Productivity tools and applications I\'ve built and deployed.',
       icon: Zap,
       color: 'from-primary-800 to-accent-600',
       path: '/applications'
@@ -23,28 +23,19 @@ export default function HomePage() {
       key: 'about',
       title: 'About Me',
       emoji: '👨‍💻',
-      description: 'My story, values, and goals as an engineer exploring the intersection of AI and human potential.',
+      description: 'Background, experience, and approach to building technology.',
       icon: Heart,
       color: 'from-accent-500 to-accent-700',
       path: '/about'
     },
     {
-      key: 'theory',
-      title: 'Theory & Writings',
-      emoji: '📚',
-      description: 'Personal papers and thoughts on AI, cognition, society, and the future of human-AI collaboration.',
-      icon: BookOpen,
-      color: 'from-primary-700 to-primary-900',
-      path: '/theory'
-    },
-    {
-      key: 'advanced',
-      title: 'Advanced Projects',
-      emoji: '🔬',
-      description: 'Experimental work, research, and agentic AI frameworks pushing the boundaries of what\'s possible.',
+      key: 'ai',
+      title: 'AI Projects',
+      emoji: '🤖',
+      description: 'Machine learning and AI projects with code and demonstrations.',
       icon: Bot,
       color: 'from-accent-600 to-primary-800',
-      path: '/advanced'
+      path: '/ai'
     }
   ]
 
@@ -83,7 +74,7 @@ export default function HomePage() {
               </h1>
               
               <p className="mantra-text mb-8 text-sand-100">
-                Engineering meaningful intelligence rooted in logic, ethics, and flow.
+                Building practical AI tools and applications.
               </p>
 
               {/* CTA Buttons */}
@@ -124,13 +115,13 @@ export default function HomePage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <Award size={20} className="text-accent-600" />
-                        <span className="text-sm font-medium text-accent-600 uppercase tracking-wide">Featured Achievement</span>
+                        <span className="text-sm font-medium text-accent-600 uppercase tracking-wide">Featured Work</span>
                       </div>
                       <h3 className="text-2xl font-bold text-primary-800 dark:text-sand-100 mb-3">
                         NASA Space Apps Challenge: Global Nominee & People's Choice
                       </h3>
                       <p className="text-primary-700 dark:text-sand-200 mb-4 leading-relaxed">
-                        Developed an AI-based scheduling tool to optimize astronaut sleep cycles based on diet, exercise, and medication data, analyzing 100,000 entries. Featured in The Times of India.
+                        Built an AI scheduling tool to optimize astronaut sleep cycles using diet, exercise, and medication data from 100,000+ entries. Received global recognition and media coverage.
                       </p>
                       <div className="flex items-center gap-4">
                         <button
@@ -142,6 +133,84 @@ export default function HomePage() {
                         <div className="text-sm text-primary-600 dark:text-sand-300">
                           🌟 Global Recognition • 📰 Media Coverage
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Work Experience */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="max-w-6xl mx-auto mt-12"
+              >
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-primary-800 dark:text-sand-100 mb-4">
+                    Professional Experience
+                  </h3>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Deloitte Experience */}
+                  <div className="featured-card p-6 text-left">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary-800 to-accent-600 flex items-center justify-center text-white text-lg">
+                          💼
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-bold text-primary-800 dark:text-sand-100 mb-1">
+                          Analyst
+                        </h4>
+                        <p className="text-accent-600 dark:text-accent-400 font-medium text-sm mb-2">
+                          Deloitte | 2022 – 2024
+                        </p>
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {['Backend Development', 'Agile', 'SQL', 'Node.js', 'NestJS', 'gRPC'].map((tech, index) => (
+                            <span key={index} className="px-2 py-1 bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-sand-300 rounded text-xs">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="text-sm text-primary-600 dark:text-sand-300 space-y-1 leading-relaxed">
+                          <li>• Designed and maintained scalable backend services using NestJS and Node.js with gRPC</li>
+                          <li>• Optimized SQL database queries and schema design for high-traffic enterprise environment</li>
+                          <li>• Collaborated in Agile teams to deliver features and enhance system performance</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Saama Technologies Experience */}
+                  <div className="featured-card p-6 text-left">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-accent-600 to-accent-500 flex items-center justify-center text-white text-lg">
+                          🤖
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-bold text-primary-800 dark:text-sand-100 mb-1">
+                          AI Intern
+                        </h4>
+                        <p className="text-accent-600 dark:text-accent-400 font-medium text-sm mb-2">
+                          Saama Technologies | 2021
+                        </p>
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {['BioBERT', 'NLP', 'Machine Learning', 'Data Preprocessing'].map((tech, index) => (
+                            <span key={index} className="px-2 py-1 bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-sand-300 rounded text-xs">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <ul className="text-sm text-primary-600 dark:text-sand-300 space-y-1 leading-relaxed">
+                          <li>• Implemented BioBERT models for medical journal summarization (20% accuracy improvement)</li>
+                          <li>• Built data preprocessing pipelines with K-means, XGBoost, and SMOTE techniques</li>
+                          <li>• Achieved 60-70% improvement in medical data analysis speed</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -178,11 +247,10 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-800 dark:text-sand-100">
-              Explore My Work
+              Projects & Work
             </h2>
             <p className="text-xl text-primary-600 dark:text-sand-300 max-w-3xl mx-auto text-balance">
-              From AI-powered applications to theoretical research, discover how I'm building 
-              the future through innovative projects that blend technology with human-centered design.
+              Browse through applications I've built, deployed, and actively maintain.
             </p>
           </motion.div>
 
@@ -190,7 +258,7 @@ export default function HomePage() {
           <div className="section-divider mb-16"></div>
 
           {/* Section Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sectionCards.map((section, index) => (
               <motion.div
                 key={section.key}
@@ -222,7 +290,7 @@ export default function HomePage() {
                   {/* Action */}
                   <div className="flex items-center justify-between">
                     <span className={`text-sm font-medium bg-gradient-to-r ${section.color} bg-clip-text text-transparent`}>
-                      Explore Projects →
+                      View Projects →
                     </span>
                     <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${section.color} flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300`}>
                       <ChevronDown size={16} className="rotate-[-90deg]" />
@@ -232,29 +300,6 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
-
-          {/* More Coming Soon Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            <div className="bg-sand-50 dark:bg-primary-800 rounded-2xl p-8 shadow-lg border-2 border-dashed border-primary-300 dark:border-sand-300/30 hover:border-accent-500 dark:hover:border-accent-400 transition-colors duration-300 max-w-md w-full">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-sand-200 dark:bg-primary-700 flex items-center justify-center">
-                  <Plus size={24} className="text-primary-600 dark:text-sand-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-primary-800 dark:text-sand-100 mb-2">
-                  More Coming Soon
-                </h3>
-                <p className="text-primary-600 dark:text-sand-300 text-sm">
-                  New sections and projects are in development. Stay tuned for updates!
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>
