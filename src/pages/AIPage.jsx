@@ -24,25 +24,25 @@ export default function AIPage() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-16 border-b border-white/[0.06]">
+      <section className="py-16 border-b border-slate-200 dark:border-white/[0.06]">
         <div className="container-custom">
           <motion.div {...fadeIn}>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors duration-300 mb-8"
+              className="inline-flex items-center gap-2 text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200 transition-colors duration-300 mb-8"
             >
               <ArrowLeft size={18} />
               Back to home
             </Link>
             <div className="flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-white/5 border border-white/[0.06]">
-                <Cpu size={28} className="text-accent-400" />
+              <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06]">
+                <Cpu size={28} className="text-accent-500 dark:text-accent-400" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
                   Projects
                 </h1>
-                <p className="text-zinc-400 mt-1">
+                <p className="text-slate-600 dark:text-zinc-400 mt-1">
                   University, hackathon, and personal work with demonstrated results.
                 </p>
               </div>
@@ -64,7 +64,7 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-xl font-semibold text-white mb-6">University Projects</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h2>
             {filteredUniversity.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredUniversity.map((project, i) => (
@@ -84,7 +84,7 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
           >
-            <h2 className="text-xl font-semibold text-white mb-6">Hackathon</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Hackathon</h2>
             {hackathonProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {hackathonProjects.map((project, i) => (
@@ -104,7 +104,7 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.08 }}
           >
-            <h2 className="text-xl font-semibold text-white mb-6">Personal Projects</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h2>
             {personalProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {personalProjects.map((project, i) => (

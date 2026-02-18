@@ -119,7 +119,7 @@ export default function HomePage() {
       />
 
       {/* Projects */}
-      <section id="projects" className="py-24 md:py-32 border-t border-white/[0.06]">
+      <section id="projects" className="py-24 md:py-32 border-t border-slate-200 dark:border-white/[0.06]">
         <div className="container-custom">
           <motion.header
             initial={{ opacity: 0, y: 20 }}
@@ -142,7 +142,7 @@ export default function HomePage() {
             transition={{ duration: 0.3 }}
             className="mb-16"
           >
-            <h3 className="text-xl font-semibold text-white mb-6">University Projects</h3>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h3>
             {filteredUniversity.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredUniversity.map((project, index) => (
@@ -165,7 +165,7 @@ export default function HomePage() {
             transition={{ duration: 0.3 }}
             className="mb-16"
           >
-            <h3 className="text-xl font-semibold text-white mb-6">Hackathon</h3>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Hackathon</h3>
             {hackathonProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {hackathonProjects.map((project, index) => (
@@ -187,7 +187,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-xl font-semibold text-white mb-6">Personal Projects</h3>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h3>
             {personalProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {personalProjects.map((project, index) => (

@@ -14,16 +14,16 @@ export default function UniversityProjectCard({ project, index = 0 }) {
       transition={{ duration: 0.3, delay: index * 0.05 }}
       className="card-portfolio p-6 flex flex-col h-full text-left"
     >
-      <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 leading-tight">
         {project.title}
       </h3>
-      <p className="text-sm text-zinc-400 mb-4 leading-relaxed">
+      <p className="text-sm text-slate-600 dark:text-zinc-400 mb-4 leading-relaxed">
         {project.positioning}
       </p>
       <ul className="space-y-2 flex-1">
         {project.bullets.slice(0, 4).map((bullet, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-zinc-400 leading-relaxed">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-400/80 mt-1.5 shrink-0" />
+          <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400/80 mt-1.5 shrink-0" />
             {bullet}
           </li>
         ))}
@@ -34,7 +34,7 @@ export default function UniversityProjectCard({ project, index = 0 }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-accent-400 transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-zinc-500 hover:text-accent-500 dark:hover:text-accent-400 transition-colors duration-300"
             aria-label="View on GitHub"
           >
             <Github size={18} />

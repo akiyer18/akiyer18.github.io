@@ -75,25 +75,25 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-zinc-400
-           hover:text-zinc-100 hover:bg-white/5 transition-all duration-300;
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-slate-600 dark:text-zinc-400
+           hover:text-slate-900 dark:hover:text-zinc-100 hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-300;
   }
 
-  /* Section title hierarchy */
+  /* Section title hierarchy — readable in light and dark */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-white tracking-tight;
+    @apply text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight;
   }
 
   .section-subtitle {
-    @apply text-lg text-zinc-400 max-w-2xl;
+    @apply text-lg text-slate-600 dark:text-zinc-400 max-w-2xl;
   }
 
   .card-title {
-    @apply text-xl font-semibold text-white;
+    @apply text-xl font-semibold text-slate-900 dark:text-white;
   }
 
   .card-description {
-    @apply text-sm text-zinc-400 leading-relaxed;
+    @apply text-sm text-slate-600 dark:text-zinc-400 leading-relaxed;
   }
 }
 

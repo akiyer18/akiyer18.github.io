@@ -51,7 +51,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-16 border-b border-white/[0.06]">
+      <section className="py-16 border-b border-slate-200 dark:border-white/[0.06]">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -60,15 +60,15 @@ export default function AboutPage() {
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors duration-300 mb-8"
+              className="inline-flex items-center gap-2 text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200 transition-colors duration-300 mb-8"
             >
               <ArrowLeft size={18} />
               Back to home
             </Link>
-            <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
               About
             </h1>
-            <p className="text-zinc-400 mt-2">
+            <p className="text-slate-600 dark:text-zinc-400 mt-2">
               Background, skills, and approach to building technology.
             </p>
           </motion.div>
@@ -83,10 +83,10 @@ export default function AboutPage() {
             transition={{ duration: 0.3, delay: 0.1 }}
             className="card-portfolio p-8 mb-16"
           >
-            <h2 className="text-xl font-semibold text-white mb-4">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
               Software Developer & AI
             </h2>
-            <div className="space-y-4 text-zinc-400 leading-relaxed">
+            <div className="space-y-4 text-slate-600 dark:text-zinc-400 leading-relaxed">
               <p>
                 I build practical AI applications and productivity tools. My work combines technical development with user-centered design to create software that solves real problems.
               </p>
@@ -109,27 +109,27 @@ export default function AboutPage() {
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex items-center gap-4 shrink-0">
-                    <div className="p-3 rounded-xl bg-white/5 border border-white/[0.06]">
-                      <skillCategory.icon size={24} className="text-accent-400" />
+                    <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06]">
+                      <skillCategory.icon size={24} className="text-accent-500 dark:text-accent-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">{skillCategory.title}</h3>
-                      <p className="text-sm text-zinc-500">{skillCategory.category}</p>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{skillCategory.title}</h3>
+                      <p className="text-sm text-slate-500 dark:text-zinc-500">{skillCategory.category}</p>
                     </div>
                   </div>
                   <div className="flex-1">
-                    <p className="text-zinc-400 mb-6 leading-relaxed">{skillCategory.description}</p>
+                    <p className="text-slate-600 dark:text-zinc-400 mb-6 leading-relaxed">{skillCategory.description}</p>
                     <div className="space-y-4">
                       {skillCategory.skillSets.map((skillSet, i) => (
                         <div key={i}>
-                          <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">
+                          <h4 className="text-xs font-semibold text-slate-500 dark:text-zinc-500 uppercase tracking-wider mb-2">
                             {skillSet.category}
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {skillSet.skills.map((skill, j) => (
                               <span
                                 key={j}
-                                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/[0.06] text-xs text-zinc-400"
+                                className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06] text-xs text-slate-600 dark:text-zinc-400"
                               >
                                 {skill}
                               </span>
@@ -151,18 +151,18 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="card-portfolio p-6"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Focus</h3>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Focus</h3>
+              <ul className="space-y-2 text-sm text-slate-600 dark:text-zinc-400">
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Maintaining and improving productivity applications
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Building AI tools with practical applications
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Machine learning in data analysis
                 </li>
               </ul>
@@ -173,18 +173,18 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="card-portfolio p-6"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Interests</h3>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Interests</h3>
+              <ul className="space-y-2 text-sm text-slate-600 dark:text-zinc-400">
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Full-stack web development
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Machine learning and data processing
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
                   Privacy-focused application design
                 </li>
               </ul>
@@ -198,8 +198,8 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="card-portfolio p-8 text-center"
           >
-            <h3 className="text-xl font-semibold text-white mb-2">Get in touch</h3>
-            <p className="text-zinc-400 mb-6 max-w-lg mx-auto">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Get in touch</h3>
+            <p className="text-slate-600 dark:text-zinc-400 mb-6 max-w-lg mx-auto">
               Open to discussing projects, sharing technical insights, or collaborating on applications that solve real problems.
             </p>
             <div className="flex flex-wrap justify-center gap-3">

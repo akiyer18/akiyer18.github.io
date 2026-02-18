@@ -17,7 +17,7 @@ export default function CoreDomains({ activeFilter, onFilter, onScrollToProjects
   }
 
   return (
-    <section className="py-16 border-b border-white/[0.06]">
+    <section className="py-16 border-b border-slate-200 dark:border-white/[0.06]">
       <div className="container-custom">
         <motion.header
           initial={{ opacity: 0, y: 16 }}
@@ -45,8 +45,8 @@ export default function CoreDomains({ activeFilter, onFilter, onScrollToProjects
               onClick={() => handleClick(domain.id)}
               className={`text-left p-4 rounded-[18px] border transition-all duration-300 ${
                 activeFilter === domain.id
-                  ? 'border-accent-400/50 bg-accent-500/10 text-white'
-                  : 'border-white/[0.08] bg-white/[0.02] text-zinc-400 hover:border-white/[0.12] hover:bg-white/[0.04] hover:text-zinc-200'
+                  ? 'border-accent-500/50 dark:border-accent-400/50 bg-accent-500/10 text-slate-900 dark:text-white'
+                  : 'border-slate-200 dark:border-white/[0.08] bg-slate-50/80 dark:bg-white/[0.02] text-slate-600 dark:text-zinc-400 hover:border-slate-300 dark:hover:border-white/[0.12] hover:bg-slate-100 dark:hover:bg-white/[0.04] hover:text-slate-900 dark:hover:text-zinc-200'
               }`}
             >
               <span className="block font-medium text-sm">{domain.label}</span>
