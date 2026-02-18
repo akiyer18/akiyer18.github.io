@@ -1,18 +1,12 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Cpu } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { completedProjects } from '../data/portfolioProjects'
+import { universityProjects, personalProjects } from '../data/portfolioProjects'
 import { PortfolioProjectCardFull } from '../components/PortfolioProjectCard'
 
 const fadeIn = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3 } }
 
 export default function AIPage() {
-  const byCategory = completedProjects.reduce((acc, p) => {
-    if (!acc[p.category]) acc[p.category] = []
-    acc[p.category].push(p)
-    return acc
-  }, {})
-
   return (
     <div className="min-h-screen pt-20">
       <section className="py-16 border-b border-white/[0.06]">
@@ -34,7 +28,7 @@ export default function AIPage() {
                   Projects
                 </h1>
                 <p className="text-zinc-400 mt-1">
-                  Completed work with demonstrated results.
+                  University and personal work with demonstrated results.
                 </p>
               </div>
             </div>
@@ -43,34 +37,46 @@ export default function AIPage() {
       </section>
 
       <section className="py-16">
-        <div className="container-custom">
-          {Object.keys(byCategory).length > 0 ? (
-            <div className="space-y-14">
-              {Object.entries(byCategory).map(([category, projects]) => (
-                <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h2 className="text-xl font-semibold text-white mb-6">{category}</h2>
-                  <div className="space-y-6">
-                    {projects.map((project, i) => (
-                      <PortfolioProjectCardFull key={project.id} project={project} index={i} />
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="min-h-[320px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-              aria-hidden="true"
-            />
-          )}
+        <div className="container-custom space-y-16">
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <h2 className="text-xl font-semibold text-white mb-6">University Projects</h2>
+            {universityProjects.length > 0 ? (
+              <div className="space-y-6">
+                {universityProjects.map((project, i) => (
+                  <PortfolioProjectCardFull key={project.id} project={project} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
+                aria-hidden="true"
+              />
+            )}
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
+          >
+            <h2 className="text-xl font-semibold text-white mb-6">Personal Projects</h2>
+            {personalProjects.length > 0 ? (
+              <div className="space-y-6">
+                {personalProjects.map((project, i) => (
+                  <PortfolioProjectCardFull key={project.id} project={project} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
+                aria-hidden="true"
+              />
+            )}
+          </motion.section>
         </div>
       </section>
     </div>

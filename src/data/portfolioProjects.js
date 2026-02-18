@@ -1,10 +1,11 @@
 /**
  * Single source of truth for completed portfolio projects.
- * Used on Home (Projects grid) and /projects page.
+ * type: 'university' | 'personal'
  */
 export const portfolioProjects = [
   {
     id: 'nasa-space-apps',
+    type: 'personal',
     title: 'NASA Space Apps Challenge — Astronaut Sleep Optimizer',
     category: 'Data Analysis & ML',
     description:
@@ -23,3 +24,5 @@ export const portfolioProjects = [
 ]
 
 export const completedProjects = portfolioProjects.filter((p) => p.status === 'completed')
+export const universityProjects = completedProjects.filter((p) => p.type === 'university')
+export const personalProjects = completedProjects.filter((p) => p.type === 'personal')
