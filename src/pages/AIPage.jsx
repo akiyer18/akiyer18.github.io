@@ -8,7 +8,7 @@ import {
   DOMAIN_FILTER_ALL,
   filterUniversityProjectsByDomain,
 } from '../data/universityProjects'
-import { PortfolioProjectCardFull } from '../components/PortfolioProjectCard'
+import { hackathonProjects } from '../data/hackathonProjects'
 import UniversityProjectCard from '../components/UniversityProjectCard'
 import CoreDomains from '../components/CoreDomains'
 
@@ -43,7 +43,7 @@ export default function AIPage() {
                   Projects
                 </h1>
                 <p className="text-zinc-400 mt-1">
-                  University and personal work with demonstrated results.
+                  University, hackathon, and personal work with demonstrated results.
                 </p>
               </div>
             </div>
@@ -84,11 +84,31 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
           >
+            <h2 className="text-xl font-semibold text-white mb-6">Hackathon</h2>
+            {hackathonProjects.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {hackathonProjects.map((project, i) => (
+                  <UniversityProjectCard key={project.id} project={project} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
+                aria-hidden="true"
+              />
+            )}
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.08 }}
+          >
             <h2 className="text-xl font-semibold text-white mb-6">Personal Projects</h2>
             {personalProjects.length > 0 ? (
-              <div className="space-y-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {personalProjects.map((project, i) => (
-                  <PortfolioProjectCardFull key={project.id} project={project} index={i} />
+                  <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
             ) : (

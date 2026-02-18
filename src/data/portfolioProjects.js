@@ -1,28 +1,7 @@
 /**
- * Single source of truth for completed portfolio projects.
- * type: 'university' | 'personal'
+ * Personal projects (non-university, non-hackathon).
+ * Empty for now; same card format when added: title, positioning, bullets, GitHub.
  */
-export const portfolioProjects = [
-  {
-    id: 'nasa-space-apps',
-    type: 'personal',
-    title: 'NASA Space Apps Challenge — Astronaut Sleep Optimizer',
-    category: 'Data Analysis & ML',
-    description:
-      'AI-powered scheduling tool that analyzes astronaut sleep patterns using diet, exercise, and medication data from 100,000+ entries. Global nominee and People\'s Choice award.',
-    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Flask', 'Data Visualization'],
-    results: [
-      'Global Nominee at NASA Space Apps Challenge',
-      'People\'s Choice Award winner',
-      'Featured in The Times of India',
-      'Processed 100,000+ data entries',
-    ],
-    links: { demo: null, github: null, article: null },
-    status: 'completed',
-    featured: true,
-  },
-]
+export const portfolioProjects = []
 
-export const completedProjects = portfolioProjects.filter((p) => p.status === 'completed')
-export const universityProjects = completedProjects.filter((p) => p.type === 'university')
-export const personalProjects = completedProjects.filter((p) => p.type === 'personal')
+export const personalProjects = []

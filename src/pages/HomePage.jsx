@@ -8,7 +8,7 @@ import {
   DOMAIN_FILTER_ALL,
   filterUniversityProjectsByDomain,
 } from '../data/universityProjects'
-import { PortfolioProjectCardCompact } from '../components/PortfolioProjectCard'
+import { hackathonProjects } from '../data/hackathonProjects'
 import UniversityProjectCard from '../components/UniversityProjectCard'
 import CoreDomains from '../components/CoreDomains'
 import CareerTimeline from '../components/CareerTimeline'
@@ -130,7 +130,7 @@ export default function HomePage() {
           >
             <h2 className="section-title mb-3">Projects</h2>
             <p className="section-subtitle">
-              University and personal work with demonstrated results.
+              University, hackathon, and personal work with demonstrated results.
             </p>
           </motion.header>
 
@@ -157,6 +157,29 @@ export default function HomePage() {
             )}
           </motion.section>
 
+          {/* Hackathon */}
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
+            className="mb-16"
+          >
+            <h3 className="text-xl font-semibold text-white mb-6">Hackathon</h3>
+            {hackathonProjects.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {hackathonProjects.map((project, index) => (
+                  <UniversityProjectCard key={project.id} project={project} index={index} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
+                aria-hidden="true"
+              />
+            )}
+          </motion.section>
+
           {/* Personal Projects */}
           <motion.section
             initial={{ opacity: 0, y: 16 }}
@@ -168,7 +191,7 @@ export default function HomePage() {
             {personalProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {personalProjects.map((project, index) => (
-                  <PortfolioProjectCardCompact key={project.id} project={project} index={index} />
+                  <UniversityProjectCard key={project.id} project={project} index={index} />
                 ))}
               </div>
             ) : (
@@ -179,7 +202,7 @@ export default function HomePage() {
             )}
           </motion.section>
 
-          {(universityProjectsData.length > 0 || personalProjects.length > 0) && (
+          {(universityProjectsData.length > 0 || hackathonProjects.length > 0 || personalProjects.length > 0) && (
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
