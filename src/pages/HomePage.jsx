@@ -1,12 +1,22 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github } from 'lucide-react'
-import { universityProjects, personalProjects } from '../data/portfolioProjects'
+import { personalProjects } from '../data/portfolioProjects'
+import {
+  universityProjectsData,
+  DOMAIN_FILTER_ALL,
+  filterUniversityProjectsByDomain,
+} from '../data/universityProjects'
 import { PortfolioProjectCardCompact } from '../components/PortfolioProjectCard'
+import UniversityProjectCard from '../components/UniversityProjectCard'
+import CoreDomains from '../components/CoreDomains'
 import CareerTimeline from '../components/CareerTimeline'
 
 export default function HomePage() {
   const navigate = useNavigate()
+  const [domainFilter, setDomainFilter] = useState(DOMAIN_FILTER_ALL)
+  const filteredUniversity = filterUniversityProjectsByDomain(universityProjectsData, domainFilter)
 
   const scrollToCareer = () => {
     document.getElementById('career').scrollIntoView({ behavior: 'smooth' })
@@ -101,6 +111,13 @@ export default function HomePage() {
         <CareerTimeline />
       </section>
 
+      {/* Core Domains — above Projects, filter + scroll */}
+      <CoreDomains
+        activeFilter={domainFilter}
+        onFilter={setDomainFilter}
+        onScrollToProjects={scrollToProjects}
+      />
+
       {/* Projects */}
       <section id="projects" className="py-24 md:py-32 border-t border-white/[0.06]">
         <div className="container-custom">
@@ -126,10 +143,10 @@ export default function HomePage() {
             className="mb-16"
           >
             <h3 className="text-xl font-semibold text-white mb-6">University Projects</h3>
-            {universityProjects.length > 0 ? (
+            {filteredUniversity.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {universityProjects.map((project, index) => (
-                  <PortfolioProjectCardCompact key={project.id} project={project} index={index} />
+                {filteredUniversity.map((project, index) => (
+                  <UniversityProjectCard key={project.id} project={project} index={index} />
                 ))}
               </div>
             ) : (
@@ -162,7 +179,7 @@ export default function HomePage() {
             )}
           </motion.section>
 
-          {(universityProjects.length > 0 || personalProjects.length > 0) && (
+          {(universityProjectsData.length > 0 || personalProjects.length > 0) && (
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
