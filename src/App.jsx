@@ -12,7 +12,7 @@ import MusicPage from './pages/MusicPage'
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-primary-950 transition-colors duration-300">
         <Navigation />
         <main>
           <Routes>

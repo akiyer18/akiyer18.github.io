@@ -1,142 +1,68 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const socialLinks = [
-    {
-      href: 'https://github.com/akiyer18',
-      icon: Github,
-      label: 'GitHub'
-    },
-    {
-      href: 'https://www.linkedin.com/in/akshaye-iyer/',
-      icon: Linkedin,
-      label: 'LinkedIn'
-    },
-    {
-      href: 'mailto:akshaye.iyer@outlook.com',
-      icon: Mail,
-      label: 'Email'
-    }
+  const links = [
+    { href: '/about', label: 'About' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/about#contact', label: 'Contact' },
+  ]
+
+  const social = [
+    { href: 'https://github.com/akiyer18', icon: Github, label: 'GitHub' },
+    { href: 'https://www.linkedin.com/in/akshaye-iyer/', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'mailto:akshaye.iyer@outlook.com', icon: Mail, label: 'Email' },
   ]
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <footer className="border-t border-white/[0.06] bg-primary-950/50">
       <div className="container-custom py-12">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand Section */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🚀</span>
-              <span className="text-xl font-bold gradient-text">Akshaye Iyer</span>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Driven by curiosity and purpose, I explore the frontiers of artificial intelligence—especially 
-            agentic frameworks, language models, and AI-assisted creativity—to build tools and systems that 
-            solve real problems and improve lives. My projects reflect a blend of research, innovation, and a
-            deep commitment to connecting people through technology.
+            <span className="text-sm font-semibold text-white">Akshaye Iyer</span>
+            <p className="text-sm text-zinc-500 max-w-md">
+              Building tools and systems with AI. Focus on practical applications and clear outcomes.
             </p>
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => (
+            <div className="flex gap-3">
+              {social.map(({ href, icon: Icon, label }) => (
                 <a
-                  key={social.label}
-                  href={social.href}
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-                  aria-label={social.label}
+                  className="p-2 text-zinc-500 hover:text-zinc-300 transition-colors duration-300"
+                  aria-label={label}
                 >
-                  <social.icon size={20} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Links
-            </h3>
-            <div className="space-y-2">
+          <nav className="flex flex-col gap-2">
+            {links.map(({ href, label }) => (
               <a
-                href="/about"
-                className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
+                key={href}
+                href={href}
+                className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-300 w-fit"
               >
-                About
+                {label}
               </a>
-              <a
-                href="/projects"
-                className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
-              >
-                Projects
-              </a>
-              <a
-                href="/about#contact"
-                className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-
-          {/* Technical Details */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Built With
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {['React', 'Tailwind CSS', 'Framer Motion', 'Vite', 'GitHub Pages'].map((tech) => (
-                <span
-                  key={tech}
-                  className="tech-tag text-xs"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              Open source portfolio built with modern technologies. 
-              <a
-                href="https://github.com/akiyer18/akiyer18.github.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent-600 dark:text-accent-400 hover:underline ml-1"
-              >
-                View source code
-              </a>
-            </p>
-          </div>
+            ))}
+          </nav>
         </div>
-
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-              <span>&copy; {currentYear} Akshaye Iyer</span>
-              <span>•</span>
-              <span>Built with</span>
-              <Heart size={14} className="text-red-500" />
-              <span>and modern web technologies</span>
-            </div>
-            
-            <div className="flex items-center gap-4 text-sm">
-              <a
-                href="https://github.com/akiyer18/akiyer18.github.io/blob/main/LICENSE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
-              >
-                MIT License
-              </a>
-              <span className="text-gray-300 dark:text-gray-600">•</span>
-              <span className="text-gray-600 dark:text-gray-300">
-                Privacy-first design
-              </span>
-            </div>
-          </div>
+        <div className="mt-10 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
+          <span>&copy; {currentYear} Akshaye Iyer</span>
+          <a
+            href="https://github.com/akiyer18/akiyer18.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-zinc-400 transition-colors duration-300"
+          >
+            Source
+          </a>
         </div>
       </div>
     </footer>
   )
-} 
+}

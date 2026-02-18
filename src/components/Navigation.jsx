@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
-import { Sun, Moon, Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Sun, Moon, Menu, X, Github, Linkedin, Mail, LayoutDashboard } from 'lucide-react'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,15 +27,15 @@ export default function Navigation() {
       : location.pathname === path
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-sand-100/80 dark:bg-primary-900/80 backdrop-blur-lg border-b border-primary-200 dark:border-sand-200/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Brand */}
           <Link
             to="/"
-            className="flex items-center gap-2 text-xl font-bold gradient-text hover:scale-105 transition-transform duration-300"
+            className="flex items-center gap-2 text-lg font-semibold text-white hover:text-accent-400 transition-colors duration-300"
           >
-            <span className="text-2xl">🚀</span>
+            <LayoutDashboard size={20} className="text-accent-400" />
+            <span className="hidden sm:inline">Akshaye Iyer</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -47,13 +47,13 @@ export default function Navigation() {
                   to={item.path}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
                     isActive(item.path)
-                      ? 'text-accent-600 dark:text-accent-400'
-                      : 'text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400'
+                      ? 'text-accent-400'
+                      : 'text-zinc-400 hover:text-zinc-100'
                   }`}
                 >
                   {item.label}
                   {isActive(item.path) && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-600 to-primary-800 rounded-full" />
+                    <div className="absolute -bottom-1 left-0 right-0 h-px bg-accent-400 rounded-full" />
                   )}
                 </Link>
               ))}
@@ -67,7 +67,7 @@ export default function Navigation() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
+                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -78,7 +78,7 @@ export default function Navigation() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
+              className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
               aria-label="Toggle theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -88,7 +88,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
+            className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -97,7 +97,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-primary-200 dark:border-sand-200/20">
+            <div className="md:hidden py-4 border-t border-white/[0.06]">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
@@ -105,16 +105,14 @@ export default function Navigation() {
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(item.path)
-                      ? 'text-accent-600 dark:text-accent-400'
-                      : 'text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400'
+                    isActive(item.path) ? 'text-accent-400' : 'text-zinc-400 hover:text-zinc-100'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
               
-              <div className="flex items-center justify-between pt-4 border-t border-primary-200 dark:border-sand-200/20">
+              <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
                 <div className="flex items-center gap-3">
                   {socialLinks.map((social) => (
                     <a
@@ -122,17 +120,16 @@ export default function Navigation() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
-                      aria-label={social.label}
-                    >
-                      <social.icon size={18} />
-                    </a>
-                  ))}
+                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
                 </div>
-                
                 <button
                   onClick={toggleTheme}
-                  className="p-2 text-primary-600 dark:text-sand-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
+                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
                   aria-label="Toggle theme"
                 >
                   {isDark ? <Sun size={20} /> : <Moon size={20} />}

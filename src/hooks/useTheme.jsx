@@ -4,12 +4,9 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // Check for saved theme preference or default to user's system preference
     const saved = localStorage.getItem('theme')
-    if (saved) {
-      return saved === 'dark'
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (saved) return saved === 'dark'
+    return true // default dark for AI portfolio
   })
 
   useEffect(() => {
