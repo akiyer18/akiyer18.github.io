@@ -1,13 +1,11 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './hooks/useTheme'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import ApplicationsPage from './pages/ApplicationsPage'
 import AboutPage from './pages/AboutPage'
-import TheoryPage from './pages/TheoryPage'
 import AIPage from './pages/AIPage'
-// Legacy routes for backward compatibility
 import GrowthPage from './pages/GrowthPage'
 import MusicPage from './pages/MusicPage'
 
@@ -21,10 +19,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/applications" element={<ApplicationsPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/theory" element={<TheoryPage />} />
-            <Route path="/ai" element={<AIPage />} />
-            <Route path="/advanced" element={<AIPage />} />
-            {/* Legacy routes for backward compatibility */}
+            <Route path="/projects" element={<AIPage />} />
+            <Route path="/ai" element={<Navigate to="/projects" replace />} />
+            <Route path="/advanced" element={<Navigate to="/projects" replace />} />
             <Route path="/growth" element={<GrowthPage />} />
             <Route path="/music" element={<MusicPage />} />
           </Routes>

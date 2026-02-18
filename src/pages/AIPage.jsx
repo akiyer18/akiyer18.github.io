@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, Github, ExternalLink, Code, Database, Brain } from 'lucide-react'
+import { ArrowLeft, Github, ExternalLink, Brain } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function AIPage() {
@@ -33,10 +33,12 @@ export default function AIPage() {
     // - Any other ML/AI projects with demonstrable outcomes
   ]
 
-  // Only show categories that have actual projects
+  // Only show completed projects; no coming-soon or placeholders
+  const completedProjects = aiProjects.filter(p => p.status === 'completed')
+
   const getProjectsByCategory = () => {
     const categories = {}
-    aiProjects.forEach(project => {
+    completedProjects.forEach(project => {
       if (!categories[project.category]) {
         categories[project.category] = []
       }
@@ -71,10 +73,10 @@ export default function AIPage() {
               </div>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-2">
-                  🤖 AI Projects
+                  Projects
                 </h1>
                 <p className="text-xl opacity-90">
-                  Machine learning and AI applications with demonstrated results
+                  Completed work with demonstrated results
                 </p>
               </div>
             </div>
@@ -208,25 +210,14 @@ export default function AIPage() {
               </motion.div>
             ))
           ) : (
-            /* Placeholder when no projects exist */
+            /* Empty state: clean grid, no placeholder text */
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center py-16"
+              className="min-h-[320px]"
             >
-              <div className="max-w-2xl mx-auto">
-                <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary-100 dark:bg-primary-800 flex items-center justify-center">
-                  <Code size={32} className="text-primary-600 dark:text-sand-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-primary-800 dark:text-sand-100 mb-4">
-                  AI Projects In Development
-                </h3>
-                <p className="text-primary-600 dark:text-sand-300 leading-relaxed">
-                  AI projects will be added here as they are completed with demonstrable results, 
-                  metrics, and working demonstrations.
-                </p>
-              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-hidden="true" />
             </motion.div>
           )}
 

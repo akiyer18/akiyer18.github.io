@@ -54,7 +54,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-pink-400 to-rose-600',
       features: ['Beat Creation', 'Sound Library', 'Export Options'],
-      status: 'Coming Soon'
+      status: 'In Development'
     },
     {
       title: 'Song Analyzer',
@@ -63,7 +63,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-violet-400 to-purple-600',
       features: ['Audio Analysis', 'Pattern Detection', 'Visualization'],
-      status: 'Coming Soon'
+      status: 'In Development'
     },
     {
       title: 'Playlist Generator',
@@ -72,7 +72,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-indigo-400 to-blue-600',
       features: ['Mood Detection', 'Activity Matching', 'Spotify Integration'],
-      status: 'Coming Soon'
+      status: 'In Development'
     }
   ]
 
@@ -84,7 +84,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-cyan-400 to-blue-600',
       features: ['Task Management', 'Smart Scheduling', 'Natural Language'],
-      status: 'Coming Soon'
+      status: 'In Development'
     },
     {
       title: 'Content Creator',
@@ -93,7 +93,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-emerald-400 to-green-600',
       features: ['Content Generation', 'Optimization', 'Multi-Platform'],
-      status: 'Coming Soon'
+      status: 'In Development'
     },
     {
       title: 'Decision Maker',
@@ -102,7 +102,7 @@ function ToolsPage() {
       link: '#',
       gradient: 'from-amber-400 to-orange-600',
       features: ['Decision Trees', 'Pro/Con Analysis', 'Risk Assessment'],
-      status: 'Coming Soon'
+      status: 'In Development'
     }
   ]
 

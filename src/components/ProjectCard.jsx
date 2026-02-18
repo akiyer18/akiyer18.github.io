@@ -61,7 +61,7 @@ export default function ProjectCard({ project, index = 0 }) {
       case 'development':
         return 'In Development'
       case 'coming-soon':
-        return 'Coming Soon'
+        return 'In Development'
       case 'research':
         return 'Research'
       default:

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ChevronDown, TrendingUp, Music, Bot, Plus, Heart, BookOpen, Zap, ExternalLink, Award } from 'lucide-react'
+import { ChevronDown, Heart, Zap, ExternalLink, Award } from 'lucide-react'
 
 export default function HomePage() {
   const navigate = useNavigate()
@@ -11,31 +11,24 @@ export default function HomePage() {
 
   const sectionCards = [
     {
-      key: 'applications',
-      title: 'Applications',
-      emoji: '🚀',
-      description: 'Productivity tools and applications I\'ve built and deployed.',
-      icon: Zap,
-      color: 'from-primary-800 to-accent-600',
-      path: '/applications'
-    },
-    {
       key: 'about',
-      title: 'About Me',
+      title: 'About',
       emoji: '👨‍💻',
       description: 'Background, experience, and approach to building technology.',
       icon: Heart,
       color: 'from-accent-500 to-accent-700',
-      path: '/about'
+      path: '/about',
+      actionLabel: 'Learn more →'
     },
     {
-      key: 'ai',
-      title: 'AI Projects',
-      emoji: '🤖',
-      description: 'Machine learning and AI projects with code and demonstrations.',
-      icon: Bot,
-      color: 'from-accent-600 to-primary-800',
-      path: '/ai'
+      key: 'projects',
+      title: 'Projects',
+      emoji: '🚀',
+      description: 'Completed projects with demonstrated results.',
+      icon: Zap,
+      color: 'from-primary-800 to-accent-600',
+      path: '/projects',
+      actionLabel: 'View Projects →'
     }
   ]
 
@@ -125,7 +118,7 @@ export default function HomePage() {
                       </p>
                       <div className="flex items-center gap-4">
                         <button
-                          onClick={() => navigate('/applications')}
+                          onClick={() => navigate('/projects')}
                           className="inline-flex items-center gap-2 text-accent-600 hover:text-accent-700 font-medium transition-colors duration-300"
                         >
                           View Project <ExternalLink size={16} />
@@ -290,7 +283,7 @@ export default function HomePage() {
                   {/* Action */}
                   <div className="flex items-center justify-between">
                     <span className={`text-sm font-medium bg-gradient-to-r ${section.color} bg-clip-text text-transparent`}>
-                      View Projects →
+                      {section.actionLabel}
                     </span>
                     <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${section.color} flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300`}>
                       <ChevronDown size={16} className="rotate-[-90deg]" />

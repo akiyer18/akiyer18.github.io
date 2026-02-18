@@ -22,10 +22,7 @@ function GameStart() {
       {/* Main Content */}
       <main className="relative max-w-4xl mx-auto p-6 text-center">
         <div className="py-20">
-          {/* Coming Soon Badge */}
-          <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-3 rounded-full font-bold text-lg mb-8 animate-bounce">
-            🚀 Coming Soon!
-          </div>
+          {/* Launch Badge removed to avoid 'Coming Soon' text */}
 
           <h1 className="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-8 animate-pulse">
             Quest Arena

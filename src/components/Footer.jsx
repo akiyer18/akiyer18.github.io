@@ -56,26 +56,26 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Explore Projects
+              Links
             </h3>
             <div className="space-y-2">
               <a
-                href="/growth"
+                href="/about"
                 className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
               >
-                📈 Growth Mindset Tools
+                About
               </a>
               <a
-                href="/music"
+                href="/projects"
                 className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
               >
-                🎵 Music Projects
+                Projects
               </a>
               <a
-                href="/ai"
+                href="/about#contact"
                 className="block text-sm text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-300"
               >
-                🤖 AI Tools
+                Contact
               </a>
             </div>
           </div>

@@ -9,10 +9,10 @@ export default function Navigation() {
   const location = useLocation()
 
   const navItems = [
-    { path: '/applications', label: 'Applications', description: 'Productivity tools and applications I\'ve built and deployed' },
-    { path: '/about', label: 'About Me', description: 'Background, skills, and approach to building technology' },
-    { path: '/theory', label: 'Theory & Writings', description: 'Personal papers and thoughts on AI, cognition, society' },
-    { path: '/ai', label: 'AI Projects', description: 'Machine learning and AI projects with demonstrable results' },
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/about#contact', label: 'Contact' },
   ]
 
   const socialLinks = [
@@ -21,7 +21,10 @@ export default function Navigation() {
     { href: 'mailto:akshaye.iyer@outlook.com', icon: Mail, label: 'Email' },
   ]
 
-  const isActive = (path) => location.pathname === path
+  const isActive = (path) =>
+    path === '/about#contact'
+      ? location.pathname === '/about' && location.hash === '#contact'
+      : location.pathname === path
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-sand-100/80 dark:bg-primary-900/80 backdrop-blur-lg border-b border-primary-200 dark:border-sand-200/20">

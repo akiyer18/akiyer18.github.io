@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Bot, Zap, Palette } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import ProjectCategorySection from '../components/ProjectCategorySection'
 import { projects, sectionInfo } from '../data/projects'
 
@@ -108,9 +107,6 @@ export default function ApplicationsPage() {
             >
               View GitHub Repository
             </a>
-            <Link to="/advanced" className="btn-outline">
-              See Advanced Projects
-            </Link>
           </div>
         </div>
       </motion.div>
