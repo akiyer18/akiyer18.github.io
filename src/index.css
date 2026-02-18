@@ -7,19 +7,15 @@
     scroll-behavior: smooth;
   }
 
-  body {
+  /* Light mode: class is on html, so target when html does NOT have .dark */
+  html:not(.dark) body {
+    @apply font-sans antialiased text-slate-800 bg-slate-50;
+  }
+
+  /* Dark mode */
+  html.dark body {
     @apply font-sans antialiased text-zinc-100;
     background-color: #0a0e1a;
-  }
-
-  .dark body {
-    @apply text-zinc-100;
-    background-color: #0a0e1a;
-  }
-
-  /* Light mode fallback — still clean */
-  body:not(.dark) {
-    background-color: #0f172a;
   }
 }
 
@@ -28,9 +24,13 @@
     @apply max-w-5xl mx-auto px-6 sm:px-8 lg:px-10;
   }
 
-  /* Hero gradient — deep navy + subtle electric blue/violet */
+  /* Hero gradient — deep navy + subtle electric blue/violet (dark) */
   .gradient-bg {
     background: linear-gradient(160deg, #0a0e1a 0%, #0f172a 40%, #1e1b4b 100%);
+  }
+
+  html:not(.dark) .gradient-bg {
+    background: linear-gradient(160deg, #f1f5f9 0%, #e2e8f0 50%, #c7d2fe 100%);
   }
 
   .gradient-text {
@@ -47,8 +47,16 @@
     @apply rounded-[18px] border border-white/[0.08] bg-white/[0.02] transition-all duration-300;
   }
 
+  html:not(.dark) .card-portfolio {
+    @apply border-slate-200 bg-white/80;
+  }
+
   .card-portfolio:hover {
     @apply scale-[1.02] border-white/[0.12] shadow-xl shadow-accent-500/10;
+  }
+
+  html:not(.dark) .card-portfolio:hover {
+    @apply border-accent-300 shadow-accent-500/20;
   }
 
   /* Buttons */
@@ -61,8 +69,8 @@
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium
-           border border-white/20 text-zinc-200
-           hover:border-white/30 hover:bg-white/5
+           border border-slate-300 dark:border-white/20 text-slate-700 dark:text-zinc-200
+           hover:border-slate-400 dark:hover:border-white/30 hover:bg-slate-100 dark:hover:bg-white/5
            transition-all duration-300;
   }
 

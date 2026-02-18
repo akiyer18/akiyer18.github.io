@@ -35,12 +35,12 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-primary-900/50 rounded-full blur-3xl" />
         </div>
 
-        <div className="container-custom relative z-10 text-center px-6">
+        <div className="container-custom relative z-10 text-center px-6 text-slate-900 dark:text-white">
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-4"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4"
           >
             Akshaye Iyer
           </motion.h1>
@@ -48,7 +48,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-xl md:text-2xl font-semibold text-accent-400 mb-2"
+            className="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-2"
           >
             Artificial Intelligence Engineer
           </motion.p>
@@ -56,7 +56,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-base md:text-lg text-zinc-500 mb-10"
+            className="text-base md:text-lg text-slate-600 dark:text-zinc-500 mb-10"
           >
             Master’s in Artificial Intelligence — Vrije Universiteit Amsterdam (2024–2026)
           </motion.p>
@@ -64,7 +64,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="text-lg text-zinc-400 max-w-2xl mx-auto mb-14 leading-relaxed"
+            className="text-lg text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto mb-14 leading-relaxed"
           >
             Building knowledge-driven and agentic AI systems that reason, act, and integrate with real-world workflows.
           </motion.p>
@@ -99,7 +99,7 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.3 }}
           onClick={scrollToCareer}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 text-zinc-500 hover:text-zinc-300 transition-colors duration-300"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300 transition-colors duration-300"
           aria-label="Scroll to career"
         >
           <ChevronDown size={28} />

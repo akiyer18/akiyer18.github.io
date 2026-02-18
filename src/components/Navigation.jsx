@@ -12,7 +12,6 @@ export default function Navigation() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
-    { path: '/about#contact', label: 'Contact' },
   ]
 
   const socialLinks = [
@@ -21,20 +20,17 @@ export default function Navigation() {
     { href: 'mailto:akshaye.iyer@outlook.com', icon: Mail, label: 'Email' },
   ]
 
-  const isActive = (path) =>
-    path === '/about#contact'
-      ? location.pathname === '/about' && location.hash === '#contact'
-      : location.pathname === path
+  const isActive = (path) => location.pathname === path
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-primary-950/70 backdrop-blur-md border-b border-slate-200 dark:border-white/[0.06]">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           <Link
             to="/"
-            className="flex items-center gap-2 text-lg font-semibold text-white hover:text-accent-400 transition-colors duration-300"
+            className="flex items-center gap-2 text-lg font-semibold text-slate-800 dark:text-white hover:text-accent-500 dark:hover:text-accent-400 transition-colors duration-300"
           >
-            <LayoutDashboard size={20} className="text-accent-400" />
+            <LayoutDashboard size={20} className="text-accent-500 dark:text-accent-400" />
             <span className="hidden sm:inline">Akshaye Iyer</span>
           </Link>
 
@@ -47,13 +43,13 @@ export default function Navigation() {
                   to={item.path}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
                     isActive(item.path)
-                      ? 'text-accent-400'
-                      : 'text-zinc-400 hover:text-zinc-100'
+                      ? 'text-accent-500 dark:text-accent-400'
+                      : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {item.label}
                   {isActive(item.path) && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-px bg-accent-400 rounded-full" />
+                    <div className="absolute -bottom-1 left-0 right-0 h-px bg-accent-500 dark:bg-accent-400 rounded-full" />
                   )}
                 </Link>
               ))}
@@ -67,7 +63,7 @@ export default function Navigation() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+                  className="p-2 text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-100 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -78,7 +74,7 @@ export default function Navigation() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+              className="p-2 text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-100 transition-colors duration-300"
               aria-label="Toggle theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -88,7 +84,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+            className="md:hidden p-2 text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100 transition-colors duration-300"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -97,7 +93,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-white/[0.06]">
+            <div className="md:hidden py-4 border-t border-slate-200 dark:border-white/[0.06]">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
@@ -105,14 +101,14 @@ export default function Navigation() {
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(item.path) ? 'text-accent-400' : 'text-zinc-400 hover:text-zinc-100'
+                    isActive(item.path) ? 'text-accent-500 dark:text-accent-400' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
               
-              <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-white/[0.06]">
                 <div className="flex items-center gap-3">
                   {socialLinks.map((social) => (
                     <a
@@ -120,7 +116,7 @@ export default function Navigation() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+                  className="p-2 text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-100 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -129,7 +125,7 @@ export default function Navigation() {
                 </div>
                 <button
                   onClick={toggleTheme}
-                  className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+                  className="p-2 text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-100 transition-colors duration-300"
                   aria-label="Toggle theme"
                 >
                   {isDark ? <Sun size={20} /> : <Moon size={20} />}

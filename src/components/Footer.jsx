@@ -6,7 +6,6 @@ export default function Footer() {
   const links = [
     { href: '/about', label: 'About' },
     { href: '/projects', label: 'Projects' },
-    { href: '/about#contact', label: 'Contact' },
   ]
 
   const social = [
@@ -16,12 +15,12 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="border-t border-white/[0.06] bg-primary-950/50">
+    <footer className="border-t border-slate-200 dark:border-white/[0.06] bg-slate-100/50 dark:bg-primary-950/50">
       <div className="container-custom py-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="space-y-4">
-            <span className="text-sm font-semibold text-white">Akshaye Iyer</span>
-            <p className="text-sm text-zinc-500 max-w-md">
+            <span className="text-sm font-semibold text-slate-800 dark:text-white">Akshaye Iyer</span>
+            <p className="text-sm text-slate-600 dark:text-zinc-500 max-w-md">
               Building tools and systems with AI. Focus on practical applications and clear outcomes.
             </p>
             <div className="flex gap-3">
@@ -31,7 +30,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-zinc-500 hover:text-zinc-300 transition-colors duration-300"
+                  className="p-2 text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300 transition-colors duration-300"
                   aria-label={label}
                 >
                   <Icon size={18} />
@@ -44,20 +43,20 @@ export default function Footer() {
               <a
                 key={href}
                 href={href}
-                className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors duration-300 w-fit"
+                className="text-sm text-slate-600 dark:text-zinc-500 hover:text-slate-800 dark:hover:text-zinc-300 transition-colors duration-300 w-fit"
               >
                 {label}
               </a>
             ))}
           </nav>
         </div>
-        <div className="mt-10 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
+        <div className="mt-10 pt-8 border-t border-slate-200 dark:border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-zinc-600">
           <span>&copy; {currentYear} Akshaye Iyer</span>
           <a
             href="https://github.com/akiyer18/akiyer18.github.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-400 transition-colors duration-300"
+            className="hover:text-slate-700 dark:hover:text-zinc-400 transition-colors duration-300"
           >
             Source
           </a>
