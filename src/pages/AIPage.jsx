@@ -64,10 +64,10 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h2>
-            {filteredUniversity.length > 0 ? (
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h2>
+            {personalProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredUniversity.map((project, i) => (
+                {personalProjects.map((project, i) => (
                   <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
@@ -104,10 +104,10 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.08 }}
           >
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h2>
-            {personalProjects.length > 0 ? (
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h2>
+            {filteredUniversity.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {personalProjects.map((project, i) => (
+                {filteredUniversity.map((project, i) => (
                   <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
