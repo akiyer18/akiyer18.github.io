@@ -8,6 +8,8 @@ import AboutPage from './pages/AboutPage'
 import AIPage from './pages/AIPage'
 import GrowthPage from './pages/GrowthPage'
 import MusicPage from './pages/MusicPage'
+import DocsPage from './pages/DocsPage'
+import PostsPage from './pages/PostsPage'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/applications" element={<ApplicationsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<AIPage />} />
+            <Route path="/docs" element={<DocsPage />} />
+            <Route path="/posts" element={<PostsPage />} />
             <Route path="/ai" element={<Navigate to="/projects" replace />} />
             <Route path="/advanced" element={<Navigate to="/projects" replace />} />
             <Route path="/growth" element={<GrowthPage />} />

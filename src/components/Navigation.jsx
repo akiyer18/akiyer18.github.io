@@ -12,6 +12,8 @@ export default function Navigation() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
+    { path: '/docs', label: 'Docs' },
+    { path: '/posts', label: 'Posts' },
   ]
 
   const socialLinks = [
