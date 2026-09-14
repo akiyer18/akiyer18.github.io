@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
 import { Sun, Moon, Menu, X, Github, Linkedin, Mail, LayoutDashboard } from 'lucide-react'
 
@@ -7,11 +7,13 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isDark, toggleTheme } = useTheme()
   const location = useLocation()
+  const navigate = useNavigate()
 
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
+    { path: '/#recommendations', label: 'Recommendations', hash: 'recommendations' },
     { path: '/docs', label: 'Docs' },
     { path: '/posts', label: 'Posts' },
   ]
@@ -22,7 +24,26 @@ export default function Navigation() {
     { href: 'mailto:akshaye.iyer@outlook.com', icon: Mail, label: 'Email' },
   ]
 
-  const isActive = (path) => location.pathname === path
+  const isActive = (item) => {
+    if (item.hash) return location.pathname === '/' && location.hash === `#${item.hash}`
+    if (item.path === '/') return location.pathname === '/' && location.hash !== '#recommendations'
+    return location.pathname === item.path
+  }
+
+  const goToHash = (e, item) => {
+    if (!item.hash) {
+      setIsMenuOpen(false)
+      return
+    }
+    e.preventDefault()
+    setIsMenuOpen(false)
+    if (location.pathname === '/') {
+      document.getElementById(item.hash)?.scrollIntoView({ behavior: 'smooth' })
+      if (location.hash !== `#${item.hash}`) navigate(`/#${item.hash}`)
+      return
+    }
+    navigate(`/#${item.hash}`)
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-primary-950/70 backdrop-blur-md border-b border-slate-200 dark:border-white/[0.06]">
@@ -43,14 +64,15 @@ export default function Navigation() {
                 <Link
                   key={item.path}
                   to={item.path}
+                  onClick={(e) => goToHash(e, item)}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(item.path)
+                    isActive(item)
                       ? 'text-accent-500 dark:text-accent-400'
                       : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {item.label}
-                  {isActive(item.path) && (
+                  {isActive(item) && (
                     <div className="absolute -bottom-1 left-0 right-0 h-px bg-accent-500 dark:bg-accent-400 rounded-full" />
                   )}
                 </Link>
@@ -101,9 +123,9 @@ export default function Navigation() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => goToHash(e, item)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(item.path) ? 'text-accent-500 dark:text-accent-400' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
+                    isActive(item) ? 'text-accent-500 dark:text-accent-400' : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {item.label}

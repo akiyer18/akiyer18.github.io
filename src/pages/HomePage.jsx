@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github } from 'lucide-react'
 import { personalProjects } from '../data/portfolioProjects'
@@ -12,11 +12,21 @@ import { hackathonProjects } from '../data/hackathonProjects'
 import UniversityProjectCard from '../components/UniversityProjectCard'
 import CoreDomains from '../components/CoreDomains'
 import CareerTimeline from '../components/CareerTimeline'
+import RecommendationsSection from '../components/RecommendationsSection'
 
 export default function HomePage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [domainFilter, setDomainFilter] = useState(DOMAIN_FILTER_ALL)
   const filteredUniversity = filterUniversityProjectsByDomain(universityProjectsData, domainFilter)
+
+  useEffect(() => {
+    if (location.hash !== '#recommendations') return
+    const id = window.setTimeout(() => {
+      document.getElementById('recommendations')?.scrollIntoView({ behavior: 'smooth' })
+    }, 50)
+    return () => window.clearTimeout(id)
+  }, [location.hash])
 
   const scrollToCareer = () => {
     document.getElementById('career').scrollIntoView({ behavior: 'smooth' })
@@ -217,6 +227,8 @@ export default function HomePage() {
           )}
         </div>
       </section>
+
+      <RecommendationsSection />
     </div>
   )
 }
