@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github } from 'lucide-react'
@@ -6,7 +6,7 @@ import { personalProjects } from '../data/portfolioProjects'
 import {
   universityProjectsData,
   DOMAIN_FILTER_ALL,
-  filterUniversityProjectsByDomain,
+  filterProjectsByDomain,
 } from '../data/universityProjects'
 import { hackathonProjects } from '../data/hackathonProjects'
 import UniversityProjectCard from '../components/UniversityProjectCard'
@@ -18,7 +18,19 @@ export default function HomePage() {
   const navigate = useNavigate()
   const location = useLocation()
   const [domainFilter, setDomainFilter] = useState(DOMAIN_FILTER_ALL)
-  const filteredUniversity = filterUniversityProjectsByDomain(universityProjectsData, domainFilter)
+
+  const featured = useMemo(
+    () => filterProjectsByDomain(personalProjects.filter((p) => p.featured), domainFilter),
+    [domainFilter]
+  )
+  const research = useMemo(
+    () => filterProjectsByDomain(universityProjectsData, domainFilter),
+    [domainFilter]
+  )
+  const hackathons = useMemo(
+    () => filterProjectsByDomain(hackathonProjects, domainFilter),
+    [domainFilter]
+  )
 
   useEffect(() => {
     if (location.hash !== '#recommendations') return
@@ -28,12 +40,8 @@ export default function HomePage() {
     return () => window.clearTimeout(id)
   }, [location.hash])
 
-  const scrollToCareer = () => {
-    document.getElementById('career').scrollIntoView({ behavior: 'smooth' })
-  }
-
   const scrollToProjects = () => {
-    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -60,7 +68,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-2"
           >
-            Artificial Intelligence Engineer
+            Software and AI Engineer
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -68,7 +76,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.12 }}
             className="text-base md:text-lg text-slate-600 dark:text-zinc-500 mb-10"
           >
-            Master’s in Artificial Intelligence — Vrije Universiteit Amsterdam (2024–2026)
+            MSc Artificial Intelligence, Vrije Universiteit Amsterdam, 2024 to 2026
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -76,7 +84,8 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="text-lg text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto mb-14 leading-relaxed"
           >
-            Building knowledge-driven and agentic AI systems that reason, act, and integrate with real-world workflows.
+            Building agentic AI systems with real evaluation. LLMs, knowledge graphs, structured
+            retrieval, and production backend experience.
           </motion.p>
 
           <motion.div
@@ -86,10 +95,10 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <button
-              onClick={scrollToCareer}
+              onClick={scrollToProjects}
               className="btn-primary inline-flex items-center justify-center gap-2"
             >
-              Career
+              Projects
               <ChevronDown size={18} className="mt-0.5" />
             </button>
             <a
@@ -108,27 +117,24 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.3 }}
-          onClick={scrollToCareer}
+          onClick={scrollToProjects}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300 transition-colors duration-300"
-          aria-label="Scroll to career"
+          aria-label="Scroll to projects"
         >
           <ChevronDown size={28} />
         </motion.button>
       </section>
 
-      {/* Career Progression */}
       <section id="career">
         <CareerTimeline />
       </section>
 
-      {/* Core Domains — above Projects, filter + scroll */}
       <CoreDomains
         activeFilter={domainFilter}
         onFilter={setDomainFilter}
         onScrollToProjects={scrollToProjects}
       />
 
-      {/* Projects */}
       <section id="projects" className="py-24 md:py-32 border-t border-slate-200 dark:border-white/[0.06]">
         <div className="container-custom">
           <motion.header
@@ -140,11 +146,10 @@ export default function HomePage() {
           >
             <h2 className="section-title mb-3">Projects</h2>
             <p className="section-subtitle">
-              University, hackathon, and personal work with demonstrated results.
+              Featured agentic AI and knowledge graph work, plus research and hackathon projects.
             </p>
           </motion.header>
 
-          {/* University Projects */}
           <motion.section
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,79 +157,76 @@ export default function HomePage() {
             transition={{ duration: 0.3 }}
             className="mb-16"
           >
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h3>
-            {filteredUniversity.length > 0 ? (
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+              Featured Projects
+            </h3>
+            {featured.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredUniversity.map((project, index) => (
+                {featured.map((project, index) => (
                   <UniversityProjectCard key={project.id} project={project} index={index} />
                 ))}
               </div>
             ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No featured projects match this filter.
+              </p>
             )}
           </motion.section>
 
-          {/* Hackathon */}
           <motion.section
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
             className="mb-16"
+          >
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+              Research Projects
+            </h3>
+            {research.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {research.map((project, index) => (
+                  <UniversityProjectCard key={project.id} project={project} index={index} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No research projects match this filter.
+              </p>
+            )}
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
           >
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Hackathon</h3>
-            {hackathonProjects.length > 0 ? (
+            {hackathons.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {hackathonProjects.map((project, index) => (
+                {hackathons.map((project, index) => (
                   <UniversityProjectCard key={project.id} project={project} index={index} />
                 ))}
               </div>
             ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No hackathon projects match this filter.
+              </p>
             )}
           </motion.section>
 
-          {/* Personal Projects */}
-          <motion.section
-            initial={{ opacity: 0, y: 16 }}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
+            className="mt-12 text-center"
           >
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h3>
-            {personalProjects.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {personalProjects.map((project, index) => (
-                  <UniversityProjectCard key={project.id} project={project} index={index} />
-                ))}
-              </div>
-            ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
-            )}
-          </motion.section>
-
-          {(universityProjectsData.length > 0 || hackathonProjects.length > 0 || personalProjects.length > 0) && (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3 }}
-              className="mt-12 text-center"
-            >
-              <button onClick={() => navigate('/projects')} className="btn-ghost">
-                View all on Projects page
-              </button>
-            </motion.div>
-          )}
+            <button onClick={() => navigate('/projects')} className="btn-ghost">
+              View all on Projects page
+            </button>
+          </motion.div>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Cpu } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -6,7 +6,7 @@ import { personalProjects } from '../data/portfolioProjects'
 import {
   universityProjectsData,
   DOMAIN_FILTER_ALL,
-  filterUniversityProjectsByDomain,
+  filterProjectsByDomain,
 } from '../data/universityProjects'
 import { hackathonProjects } from '../data/hackathonProjects'
 import UniversityProjectCard from '../components/UniversityProjectCard'
@@ -16,7 +16,19 @@ const fadeIn = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, 
 
 export default function AIPage() {
   const [domainFilter, setDomainFilter] = useState(DOMAIN_FILTER_ALL)
-  const filteredUniversity = filterUniversityProjectsByDomain(universityProjectsData, domainFilter)
+
+  const featured = useMemo(
+    () => filterProjectsByDomain(personalProjects.filter((p) => p.featured), domainFilter),
+    [domainFilter]
+  )
+  const research = useMemo(
+    () => filterProjectsByDomain(universityProjectsData, domainFilter),
+    [domainFilter]
+  )
+  const hackathons = useMemo(
+    () => filterProjectsByDomain(hackathonProjects, domainFilter),
+    [domainFilter]
+  )
 
   const scrollToProjects = () => {
     document.getElementById('projects-content')?.scrollIntoView({ behavior: 'smooth' })
@@ -43,7 +55,7 @@ export default function AIPage() {
                   Projects
                 </h1>
                 <p className="text-slate-600 dark:text-zinc-400 mt-1">
-                  University, hackathon, and personal work with demonstrated results.
+                  Featured agentic AI and knowledge graph work, plus research and hackathon projects.
                 </p>
               </div>
             </div>
@@ -64,18 +76,19 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Personal Projects</h2>
-            {personalProjects.length > 0 ? (
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+              Featured Projects
+            </h2>
+            {featured.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {personalProjects.map((project, i) => (
+                {featured.map((project, i) => (
                   <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
             ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No featured projects match this filter.
+              </p>
             )}
           </motion.section>
 
@@ -84,18 +97,19 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
           >
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Hackathon</h2>
-            {hackathonProjects.length > 0 ? (
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+              Research Projects
+            </h2>
+            {research.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {hackathonProjects.map((project, i) => (
+                {research.map((project, i) => (
                   <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
             ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No research projects match this filter.
+              </p>
             )}
           </motion.section>
 
@@ -104,18 +118,17 @@ export default function AIPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.08 }}
           >
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">University Projects</h2>
-            {filteredUniversity.length > 0 ? (
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">Hackathon</h2>
+            {hackathons.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredUniversity.map((project, i) => (
+                {hackathons.map((project, i) => (
                   <UniversityProjectCard key={project.id} project={project} index={i} />
                 ))}
               </div>
             ) : (
-              <div
-                className="min-h-[200px] rounded-[18px] border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden="true"
-              />
+              <p className="text-sm text-slate-500 dark:text-zinc-500">
+                No hackathon projects match this filter.
+              </p>
             )}
           </motion.section>
         </div>

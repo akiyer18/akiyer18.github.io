@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="space-y-4">
             <span className="text-sm font-semibold text-slate-800 dark:text-white">Akshaye Iyer</span>
             <p className="text-sm text-slate-600 dark:text-zinc-500 max-w-md">
-              Building tools and systems with AI. Focus on practical applications and clear outcomes.
+              Building agentic AI systems and knowledge graph pipelines. Research depth, production mindset.
             </p>
             <div className="flex gap-3">
               {social.map(({ href, icon: Icon, label }) => (

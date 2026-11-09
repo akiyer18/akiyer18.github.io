@@ -6,15 +6,6 @@ const LINKEDIN_RECOMMENDATIONS =
 
 const recommendations = [
   {
-    name: 'Beth Carey',
-    title: 'Founder and Director, Language Parent',
-    relationship: 'Thesis Mentor',
-    badge: 'Thesis Mentor',
-    featured: true,
-    quote:
-      'He demonstrates a concern and curiosity for responsible AI for the future. His questions were incisive to drive toward an outcome in limited time. I would recommend him as someone who will make a difference in an organisation by considering consequences.',
-  },
-  {
     name: 'Anubhab Panda',
     title: 'Senior AI/ML Engineer (Direct Manager)',
     relationship: 'Managed directly',
@@ -33,15 +24,6 @@ const recommendations = [
       'Consistently impressed by his strong problem-solving skills and technical depth. He has hands-on expertise in Python, backend systems, and modern AI workflows, with the ability to translate complex ideas into practical solutions. Proactive, dependable, and a great team player.',
   },
   {
-    name: 'Snehal Bamble',
-    title: 'Data Engineer, TCS (formerly Saama Technologies)',
-    relationship: 'Senior colleague',
-    badge: 'Senior Colleague',
-    featured: false,
-    quote:
-      'His work showed strong technical understanding and good problem-solving skills. Akshaye is a quick learner, dedicated, and always willing to take initiative — able to understand complex concepts quickly and contribute effectively to the team.',
-  },
-  {
     name: 'Dhaval Vaghela',
     title: 'Senior Consultant, Deloitte',
     relationship: 'Senior colleague',
@@ -49,6 +31,24 @@ const recommendations = [
     featured: false,
     quote:
       'He learns quickly, adapts well to new situations and is always open to trying out new ideas. He likes thinking creatively and often comes up with different approaches. Very easy and fun to work with — brings a good positive energy to the team.',
+  },
+  {
+    name: 'Beth Carey',
+    title: 'Founder and Director, Language Parent',
+    relationship: 'Thesis Mentor',
+    badge: 'Thesis Mentor',
+    featured: true,
+    quote:
+      'He demonstrates a concern and curiosity for responsible AI for the future. His questions were incisive to drive toward an outcome in limited time. I would recommend him as someone who will make a difference in an organisation by considering consequences.',
+  },
+  {
+    name: 'Snehal Bamble',
+    title: 'Data Engineer, TCS (formerly Saama Technologies)',
+    relationship: 'Senior colleague',
+    badge: 'Senior Colleague',
+    featured: false,
+    quote:
+      'His work showed strong technical understanding and good problem-solving skills. Akshaye is a quick learner, dedicated, and always willing to take initiative — able to understand complex concepts quickly and contribute effectively to the team.',
   },
   {
     name: 'Nikil M',

@@ -2,13 +2,18 @@ import { motion } from 'framer-motion'
 
 const DOMAINS = [
   { id: 'all', label: 'All', description: 'All projects' },
-  { id: 'nlp', label: 'Natural Language Systems', description: 'Statistical modeling, NLP' },
-  { id: 'logic', label: 'Logical & Knowledge-Based Reasoning', description: 'Knowledge graphs, symbolic logic' },
-  { id: 'optimization', label: 'Optimization & Evolutionary Learning', description: 'Evolutionary AI, search' },
+  { id: 'agentic', label: 'Agentic AI', description: 'LLM agents, RAG, tool calling' },
+  {
+    id: 'knowledge-graph',
+    label: 'Knowledge Graphs',
+    description: 'Wikidata, OWL, structured retrieval',
+  },
+  { id: 'nlp', label: 'NLP Research', description: 'Fine tuning, evaluation, domain shift' },
+  { id: 'hackathon', label: 'Hackathon', description: 'Competition and demo projects' },
 ]
 
 /**
- * Core Domains: three blocks + All. Click sets filter and scrolls to #projects.
+ * Core Domains filter. Click sets filter and scrolls to #projects.
  */
 export default function CoreDomains({ activeFilter, onFilter, onScrollToProjects }) {
   const handleClick = (id) => {
@@ -27,16 +32,14 @@ export default function CoreDomains({ activeFilter, onFilter, onScrollToProjects
           className="mb-10"
         >
           <h2 className="section-title mb-3">Core Domains</h2>
-          <p className="section-subtitle">
-            Filter projects by focus area.
-          </p>
+          <p className="section-subtitle">Filter projects by focus area.</p>
         </motion.header>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
         >
           {DOMAINS.map((domain) => (
             <button

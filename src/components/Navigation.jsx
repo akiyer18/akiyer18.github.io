@@ -14,8 +14,6 @@ export default function Navigation() {
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
     { path: '/#recommendations', label: 'Recommendations', hash: 'recommendations' },
-    { path: '/docs', label: 'Docs' },
-    { path: '/posts', label: 'Posts' },
   ]
 
   const socialLinks = [

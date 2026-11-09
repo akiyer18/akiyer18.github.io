@@ -1,51 +1,61 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, Code, Cpu, Settings } from 'lucide-react'
+import { ArrowLeft, Boxes, Brain, Code2, Network, Server } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function AboutPage() {
   const skillCategories = [
     {
-      icon: Code,
-      title: 'Technical Skills',
-      category: 'Programming & Development',
-      description:
-        'Full-stack development with focus on data processing, machine learning integration, and scalable application architecture.',
-      skillSets: [
-        { category: 'Programming', skills: ['Python', 'TypeScript', 'JavaScript', 'Node.js', 'SQL'] },
-        { category: 'ML/DL Frameworks', skills: ['TensorFlow', 'PyTorch', 'Keras', 'Scikit-learn', 'LangChain'] },
-        { category: 'Data Management', skills: ['Data Preprocessing', 'Data Visualization', 'Matplotlib', 'Seaborn'] },
-        { category: 'Development Tools', skills: ['Git/GitHub', 'APIs (RESTful)'] },
+      icon: Brain,
+      title: 'Agents and LLMs',
+      category: 'Agentic systems',
+      skills: [
+        'LangGraph',
+        'LangChain',
+        'Strands SDK',
+        'Tool calling',
+        'RAG',
+        'LLM evaluation',
+        'Prompt engineering',
       ],
     },
     {
-      icon: Cpu,
-      title: 'Machine Learning & AI',
-      category: 'Artificial Intelligence',
-      description:
-        'Experience building and deploying ML models with practical applications and demonstrated results in competitions and projects.',
-      skillSets: [
-        {
-          category: 'Core ML/AI',
-          skills: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Generative AI'],
-        },
-        {
-          category: 'Specialized',
-          skills: ['Data Analysis', 'Pattern Recognition', 'Predictive Modeling', 'Algorithm Design'],
-        },
+      icon: Network,
+      title: 'Knowledge Graphs',
+      category: 'Structured knowledge',
+      skills: ['Wikidata', 'SPARQL', 'OWL', 'Protégé'],
+    },
+    {
+      icon: Server,
+      title: 'Infrastructure and Backend',
+      category: 'Production systems',
+      skills: [
+        'gRPC',
+        'NestJS',
+        'Node.js',
+        'Kubernetes',
+        'Docker',
+        'GitHub Actions',
+        'Amazon Bedrock',
+        'AWS CDK',
       ],
     },
     {
-      icon: Settings,
-      title: 'Professional Skills',
-      category: 'Collaboration & Analysis',
-      description:
-        'Analytical and communication abilities developed through project work, competition participation, and cross-functional collaboration.',
-      skillSets: [
-        {
-          category: 'Analytical',
-          skills: ['Analytical Thinking', 'Problem Solving', 'Strategic Planning', 'System Optimization'],
-        },
+      icon: Boxes,
+      title: 'Machine Learning',
+      category: 'Models and evaluation',
+      skills: [
+        'PyTorch',
+        'TensorFlow',
+        'HuggingFace Transformers',
+        'Scikit-learn',
+        'XGBoost',
       ],
+    },
+    {
+      icon: Code2,
+      title: 'Programming',
+      category: 'Languages and tooling',
+      skills: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'Git'],
     },
   ]
 
@@ -69,7 +79,7 @@ export default function AboutPage() {
               About
             </h1>
             <p className="text-slate-600 dark:text-zinc-400 mt-2">
-              Background, skills, and approach to building technology.
+              Software and AI Engineer focused on agents, knowledge graphs, and production systems.
             </p>
           </motion.div>
         </div>
@@ -84,23 +94,23 @@ export default function AboutPage() {
             className="card-portfolio p-8 mb-16"
           >
             <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
-              Software Developer & AI
+              Software and AI Engineer
             </h2>
-            <div className="space-y-4 text-slate-600 dark:text-zinc-400 leading-relaxed">
-              <p>
-                I build practical AI applications and productivity tools. My work combines technical development with user-centered design to create software that solves real problems.
-              </p>
-              <p>
-                I've been recognized in competitions like the NASA Space Apps Challenge (Global Nominee, People's Choice) and maintain several open-source applications. I focus on working software with demonstrable results.
-              </p>
-            </div>
+            <p className="text-slate-600 dark:text-zinc-400 leading-relaxed">
+              Software and AI engineer with two years of production backend engineering at Deloitte
+              on a corporate banking platform, and hands on experience building LLM agents, agentic
+              workflows and knowledge graph systems in Python and LangGraph. MSc Artificial
+              Intelligence from Vrije Universiteit Amsterdam, with a thesis on grounding LLM
+              extracted facts to Wikidata. Interested in the engineering around the model: tool
+              calling, retrieval, grounding, evaluation and deployment.
+            </p>
           </motion.div>
 
-          <h2 className="section-title mb-8">Technical Skills</h2>
+          <h2 className="section-title mb-8">Skills</h2>
           <div className="space-y-6 mb-16">
             {skillCategories.map((skillCategory, index) => (
               <motion.div
-                key={index}
+                key={skillCategory.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -113,38 +123,30 @@ export default function AboutPage() {
                       <skillCategory.icon size={24} className="text-accent-500 dark:text-accent-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{skillCategory.title}</h3>
-                      <p className="text-sm text-slate-500 dark:text-zinc-500">{skillCategory.category}</p>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {skillCategory.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 dark:text-zinc-500">
+                        {skillCategory.category}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-slate-600 dark:text-zinc-400 mb-6 leading-relaxed">{skillCategory.description}</p>
-                    <div className="space-y-4">
-                      {skillCategory.skillSets.map((skillSet, i) => (
-                        <div key={i}>
-                          <h4 className="text-xs font-semibold text-slate-500 dark:text-zinc-500 uppercase tracking-wider mb-2">
-                            {skillSet.category}
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {skillSet.skills.map((skill, j) => (
-                              <span
-                                key={j}
-                                className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06] text-xs text-slate-600 dark:text-zinc-400"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="flex-1 flex flex-wrap gap-2 content-center">
+                    {skillCategory.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06] text-xs text-slate-600 dark:text-zinc-400"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <div className="grid md:grid-cols-1 gap-6 mb-16">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -155,37 +157,15 @@ export default function AboutPage() {
               <ul className="space-y-2 text-sm text-slate-600 dark:text-zinc-400">
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Maintaining and improving productivity applications
+                  Agentic LLM systems and knowledge graph pipelines
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Building AI tools with practical applications
+                  LLM evaluation without labels
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Machine learning in data analysis
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="card-portfolio p-6"
-            >
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Interests</h3>
-              <ul className="space-y-2 text-sm text-slate-600 dark:text-zinc-400">
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Full-stack web development
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Machine learning and data processing
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-500 dark:bg-accent-400 mt-1.5 shrink-0" />
-                  Privacy-focused application design
+                  Production deployment and retrieval architecture
                 </li>
               </ul>
             </motion.div>
@@ -200,7 +180,7 @@ export default function AboutPage() {
           >
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Get in touch</h3>
             <p className="text-slate-600 dark:text-zinc-400 mb-6 max-w-lg mx-auto">
-              Open to discussing projects, sharing technical insights, or collaborating on applications that solve real problems.
+              Open to discussing agentic AI systems, knowledge graphs, and production LLM work.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a href="mailto:akshaye.iyer@outlook.com" className="btn-primary">

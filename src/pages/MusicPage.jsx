@@ -9,111 +9,52 @@ export default function MusicPage() {
   const sectionData = sectionInfo.music
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
-      <section className={`py-16 bg-gradient-to-r ${sectionData.color} text-white`}>
+    <div className="min-h-screen pt-20">
+      <section className="py-16 border-b border-slate-200 dark:border-white/[0.06]">
         <div className="container-custom">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3 }}
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 mb-6"
+              className="inline-flex items-center gap-2 text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200 transition-colors duration-300 mb-8"
             >
-              <ArrowLeft size={20} />
-              Back to Home
+              <ArrowLeft size={18} />
+              Back to home
             </Link>
-            
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl">
-                <Music size={32} />
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/[0.06]">
+                <Music size={28} className="text-accent-500 dark:text-accent-400" />
               </div>
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">
-                  {sectionData.emoji} {sectionData.title}
+                <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+                  {sectionData.title}
                 </h1>
-                <p className="text-xl opacity-90">
-                  {sectionData.description}
-                </p>
+                <p className="text-slate-600 dark:text-zinc-400 mt-1">{sectionData.description}</p>
               </div>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <p className="text-white/90">
-                <strong>Audio Processing:</strong> All music tools prioritize local processing and privacy. 
-                Your audio files and creative work stay on your device.
-              </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Projects Grid */}
       <section className="py-16">
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-8"
-          >
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Music Tools ({musicProjects.length})
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              Creative applications for music production, analysis, and discovery.
-            </p>
-          </motion.div>
-
-          {musicProjects.length > 0 && (
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+            Featured
+          </h2>
+          {musicProjects.length > 0 ? (
             <div className="grid md:grid-cols-2 gap-8">
               {musicProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                />
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
-          )}
-
-          {/* Coming Soon Notice - Only show if there ARE projects */}
-          {musicProjects.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="mt-16 text-center"
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  🎼 Music Projects in Development
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                  These innovative music tools are currently in development. They'll combine modern web technologies 
-                  with audio processing to create powerful, privacy-first music applications.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://github.com/akiyer18"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary"
-                  >
-                    Follow Development
-                  </a>
-                  <Link to="/growth" className="btn-outline">
-                    Try Live Tools
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
+          ) : (
+            <p className="text-sm text-slate-500 dark:text-zinc-500">No music projects yet.</p>
           )}
         </div>
       </section>
     </div>
   )
-} 
+}
